@@ -5,7 +5,7 @@
 //  Created by Pri Palacio on 19/08/2025.
 //
 
-#!/bin/bash
+#!/bin/sh
 set -e
 
 PROJECT_DIR="$(pwd)"
