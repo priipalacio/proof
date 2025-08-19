@@ -1,47 +1,68 @@
 #!/bin/bash
-set -e
+set -e  # parar si hay error
 
+# Ruta raíz del proyecto generado
 PROJECT_DIR="$(pwd)"
+
+# Nombre del proyecto (cookiecutter lo reemplaza antes de ejecutar este hook)
 APP_NAME="{{ cookiecutter.project_name }}"
 DEMO_NAME="${APP_NAME}Demo"
 
-mkdir -p "$PROJECT_DIR/Demo/$DEMO_NAME"
+# Crear carpeta Demo si no existe
+mkdir -p "$PROJECT_DIR/Demo"
 
-# Crear un project.yml dinámico
-cat > "$PROJECT_DIR/Demo/project.yml" <<EOF
-name: $DEMO_NAME
-options:
-  bundleIdPrefix: com.example
-targets:
-  $DEMO_NAME:
-    type: application
-    platform: iOS
-    sources:
-      - $DEMO_NAME
-    scheme:
-      testTargets:
-        - ${APP_NAME}DemoTests
-  ${APP_NAME}DemoTests:
-    type: bundle.unit-test
-    platform: iOS
-    sources:
-      - ${APP_NAME}DemoTests
-    dependencies:
-      - target: $DEMO_NAME
-  ${APP_NAME}DemoUITests:
-    type: bundle.ui-testing
-    platform: iOS
-    sources:
-      - ${APP_NAME}DemoUITests
-    dependencies:
-      - target: $DEMO_NAME
-EOF
-
-# Crear carpetas de código
-mkdir -p "$PROJECT_DIR/Demo/$DEMO_NAME"
+# Crear estructura de un proyecto Xcode de ejemplo
+mkdir -p "$PROJECT_DIR/Demo/${DEMO_NAME}"
 mkdir -p "$PROJECT_DIR/Demo/${APP_NAME}DemoTests"
 mkdir -p "$PROJECT_DIR/Demo/${APP_NAME}DemoUITests"
 
-# Generar el Xcode project
-cd "$PROJECT_DIR/Demo"
-/opt/homebrew/bin/xcodegen generate
+# Archivos básicos
+cat > "$PROJECT_DIR/Demo/${DEMO_NAME}/${DEMO_NAME}App.swift" <<EOF
+import SwiftUI
+
+@main
+struct ${DEMO_NAME}App: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+EOF
+
+cat > "$PROJECT_DIR/Demo/${DEMO_NAME}/ContentView.swift" <<EOF
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        Text("Hello from ${DEMO_NAME}!")
+    }
+}
+
+#Preview {
+    ContentView()
+}
+EOF
+
+cat > "$PROJECT_DIR/Demo/${APP_NAME}DemoTests/${APP_NAME}DemoTests.swift" <<EOF
+import XCTest
+@testable import ${DEMO_NAME}
+
+final class ${APP_NAME}DemoTests: XCTestCase {
+    func testExample() throws {
+        XCTAssertTrue(true)
+    }
+}
+EOF
+
+cat > "$PROJECT_DIR/Demo/${APP_NAME}DemoUITests/${APP_NAME}DemoUITests.swift" <<EOF
+import XCTest
+
+final class ${APP_NAME}DemoUITests: XCTestCase {
+    func testLaunch() throws {
+        let app = XCUIApplication()
+        app.launch()
+        XCTAssertTrue(app.buttons.count >= 0)
+    }
+}
+EOF
