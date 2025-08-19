@@ -1,11 +1,4 @@
-#
-//  post_gen_project.sh
-//  proof
-//
-//  Created by Pri Palacio on 19/08/2025.
-//
-
-#!/bin/sh
+#!/bin/bash
 set -e
 
 PROJECT_DIR="$(pwd)"
