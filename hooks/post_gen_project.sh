@@ -44,4 +44,4 @@ mkdir -p "$PROJECT_DIR/Demo/${APP_NAME}DemoUITests"
 
 # Generar el Xcode project
 cd "$PROJECT_DIR/Demo"
-xcodegen generate
+/opt/homebrew/bin/xcodegen generate
