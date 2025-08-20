@@ -8,5 +8,4 @@ PROJECT_DIR="$(pwd)"
 APP_NAME="{{cookiecutter.project_name}}"
 DEMO_NAME="${APP_NAME}Demo"
 
-replace "ORGANIZATION" "{{ cookiecutter.company_name }}"
-replace "com.company.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
+replace "com.company.PRODUCTNAME" "{{cookiecutter.bundle_identifier }}"
