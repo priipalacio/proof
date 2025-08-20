@@ -4,21 +4,21 @@
 import PackageDescription
 
 let package = Package(
-    name: "Package",
+    name: "{{cookiecutter.project_name}}",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "Package",
-            targets: ["Package"]),
+            name: "{{cookiecutter.project_name}}",
+            targets: ["{{cookiecutter.project_name}}"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Package"),
+            name: "{{cookiecutter.project_name}}"),
         .testTarget(
-            name: "PackageTests",
-            dependencies: ["Package"]
+            name: "{{cookiecutter.project_name}}Tests",
+            dependencies: ["{{cookiecutter.project_name}}"]
         ),
     ]
 )

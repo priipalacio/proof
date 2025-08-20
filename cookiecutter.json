@@ -4,5 +4,5 @@
     "bundle_identifier": "com.uala.{{ cookiecutter.project_name}}Demo",
     "dev_name": "Priscila Palacio",
     "creation_year": "2025",
-    "company_name": "bancar"
+    "company_name": "uala"
 }
