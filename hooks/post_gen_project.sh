@@ -5,5 +5,5 @@ set -e
 PROJECT_DIR="$(pwd)"
 
 # Entrar a la carpeta del proyecto donde está el project.yml
-mkdir "Demo"
+mkdir "../Demo"
 
