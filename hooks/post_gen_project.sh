@@ -10,4 +10,4 @@ cd "$PROJECT_DIR/Demo"
 
 # Ejecutar xcodegen
 echo "⚡ Generando proyecto Xcode con XcodeGen..."
-xcodegen generate
+xcodegen
