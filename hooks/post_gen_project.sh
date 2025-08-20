@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e  # parar si hay error
 
 # Ruta raíz del proyecto generado
