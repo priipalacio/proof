@@ -8,6 +8,3 @@ PROJECT_DIR="$(pwd)"
 mkdir "$PROJECT_DIR/Demo"
 cd "$PROJECT_DIR/Demo"
 
-# Ejecutar xcodegen
-echo "⚡ Generando proyecto Xcode con XcodeGen..."
-xcodegen
