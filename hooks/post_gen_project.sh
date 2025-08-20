@@ -8,4 +8,4 @@ PROJECT_DIR="$(pwd)"
 APP_NAME="{{cookiecutter.project_name}}Demo"
 DEMO_NAME="${APP_NAME}Demo"
 
-mv "$PROJECT_DIR/$APPNAME" "$PROJECT_DIR/Demo"
+mv "$PROJECT_DIR/{{cookiecutter.project_name}}Demo" "$PROJECT_DIR/Demo"
