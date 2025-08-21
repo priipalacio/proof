@@ -6,6 +6,7 @@ PROJECT_DIR="../"
 
 # Creacion de directorios de Demo
 DEMO_NAME="{{cookiecutter.project_name}}Demo"
+mkdir "../Demo"
 mkdir "../Demo/$DEMO_NAME"
 mkdir "../Demo/${DEMO_NAME}Tests"
 mkdir "../Demo/${DEMO_NAME}UITests"
