@@ -4,10 +4,10 @@ set -e
 # Ruta raíz del proyecto generado
 PROJECT_DIR="../"
 
-
-mkdir -p {{cookiecutter.project_name}}Demo
-mkdir -p {{cookiecutter.project_name}}DemoTests
-mkdir -p {{cookiecutter.project_name}}DemoUITests
+mkdir -p Demo
+mkdir -p Demo/{{cookiecutter.project_name}}Demo
+mkdir -p Demo/{{cookiecutter.project_name}}DemoTests
+mkdir -p Demo/{{cookiecutter.project_name}}DemoUITests
 
 cat > "project.yml"<<EOF
 name: {{cookiecutter.project_name}}Demo
