@@ -62,14 +62,6 @@ echo "All notable changes to this project will be documented in this file." >> C
 echo "" >> CHANGELOG.md
 echo "## [Unreleased]" >> CHANGELOG.md
 
-if command -v xcodegen >/dev/null 2>&1; then
-  xcodegen generate
-  rm project.yml
-else
-  echo "⚠️ XcodeGen no está instalado. Instalalo con: brew install xcodegen"
-  exit 1
-fi
-
 # Generación del Package.swift
 cat > "Package.swift" <<EOF
 // swift-tools-version:6.0
@@ -152,3 +144,11 @@ final class ${APP_NAME}DemoUITests: XCTestCase {
     }
 }
 EOF
+
+if command -v xcodegen >/dev/null 2>&1; then
+  xcodegen generate
+  rm project.yml
+else
+  echo "⚠️ XcodeGen no está instalado. Instalalo con: brew install xcodegen"
+  exit 1
+fi
