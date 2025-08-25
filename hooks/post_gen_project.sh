@@ -4,11 +4,12 @@ set -e
 # Ruta raíz del proyecto generado
 PROJECT_DIR="../"
 
-mkdir -p Demo
-mkdir -p Demo/{{cookiecutter.project_name}}Demo
-mkdir -p Demo/{{cookiecutter.project_name}}DemoTests
-mkdir -p Demo/{{cookiecutter.project_name}}DemoUITests
+mkdir -p ../Demo
+mkdir -p ../Demo/{{cookiecutter.project_name}}Demo
+mkdir -p ../Demo/{{cookiecutter.project_name}}DemoTests
+mkdir -p ../Demo/{{cookiecutter.project_name}}DemoUITests
 
+cd ../Demo
 cat > "project.yml"<<EOF
 name: {{cookiecutter.project_name}}Demo
 options:
@@ -57,6 +58,7 @@ echo "## [Unreleased]" >> CHANGELOG.md
 
 if command -v xcodegen >/dev/null 2>&1; then
   xcodegen generate
+  rm project.yml
 else
   echo "⚠️ XcodeGen no está instalado. Instalalo con: brew install xcodegen"
   exit 1
