@@ -130,7 +130,7 @@ struct ContentView: View {
 }
 EOF
 
-cat > "$PROJECT_DIR/Demo/${APP_NAME}DemoTests/${APP_NAME}DemoTests.swift" <<EOF
+cat > "Demo/${DEMO_NAME}DemoTests/${DEMO_NAME}DemoTests.swift" <<EOF
 import XCTest
 @testable import ${DEMO_NAME}
 
@@ -141,7 +141,7 @@ final class ${APP_NAME}DemoTests: XCTestCase {
 }
 EOF
 
-cat > "$PROJECT_DIR/Demo/${DEMO_NAME}DemoUITests/${APP_NAME}DemoUITests.swift" <<EOF
+cat > "Demo/${DEMO_NAME}DemoUITests/${DEMO_NAME}DemoUITests.swift" <<EOF
 import XCTest
 
 final class ${APP_NAME}DemoUITests: XCTestCase {
