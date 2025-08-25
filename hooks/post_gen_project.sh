@@ -3,6 +3,7 @@ set -e
 
 # Ruta raíz del proyecto generado
 PROJECT_DIR="../"
+DEMO_NAME="{{cookiecutter.project_name}}"
 
 mkdir -p ../Demo
 mkdir -p ../Demo/{{cookiecutter.project_name}}Demo
@@ -26,6 +27,10 @@ targets:
     type: application
     platform: iOS
     bundleId: com.uala.{{cookiecutter.bundle_identifier}}
+    info:
+      path: {{cookiecutter.project_name}}Demo/Info.plist
+      properties:
+        CFBundleIdentifier: {{cookiecutter.bundle_identifier}}
     sources:
       - path: ./{{cookiecutter.project_name}}Demo
         exclude:
@@ -50,6 +55,7 @@ targets:
       - target: {{cookiecutter.project_name}}Demo
 EOF
 
+cd ..
 echo "# Changelog" > CHANGELOG.md
 echo "" >> CHANGELOG.md
 echo "All notable changes to this project will be documented in this file." >> CHANGELOG.md
@@ -63,3 +69,86 @@ else
   echo "⚠️ XcodeGen no está instalado. Instalalo con: brew install xcodegen"
   exit 1
 fi
+
+# Generación del Package.swift
+cat > "Package.swift" <<EOF
+// swift-tools-version:6.0
+import PackageDescription
+
+let package = Package(
+    name: "{{cookiecutter.project_name}}",
+    platforms: [
+        .iOS(.v15)
+    ],
+    products: [
+        .library(
+            name: "{{cookiecutter.project_name}}",
+            targets: ["{{cookiecutter.project_name}}"]
+        ),
+    ],
+    dependencies: [],
+    targets: [
+        .target(
+            name: "{{cookiecutter.project_name}}",
+            dependencies: []
+        ),
+        .testTarget(
+            name: "{{cookiecutter.project_name}}Tests",
+            dependencies: ["{{cookiecutter.project_name}}"]
+        ),
+    ]
+)
+EOF
+
+
+# App principal
+cat > "Demo/$DEMO_NAME/${DEMO_NAME}App.swift" <<EOF
+import SwiftUI
+
+@main
+struct ${DEMO_NAME}App: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+EOF
+
+# ContentView
+cat > "Demo/$DEMO_NAME/ContentView.swift" <<EOF
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        Text("Hello from ${DEMO_NAME}!")
+    }
+}
+
+#Preview {
+    ContentView()
+}
+EOF
+
+cat > "$PROJECT_DIR/Demo/${APP_NAME}DemoTests/${APP_NAME}DemoTests.swift" <<EOF
+import XCTest
+@testable import ${DEMO_NAME}
+
+final class ${APP_NAME}DemoTests: XCTestCase {
+    func testExample() throws {
+        XCTAssertTrue(true)
+    }
+}
+EOF
+
+cat > "$PROJECT_DIR/Demo/${DEMO_NAME}DemoUITests/${APP_NAME}DemoUITests.swift" <<EOF
+import XCTest
+
+final class ${APP_NAME}DemoUITests: XCTestCase {
+    func testLaunch() throws {
+        let app = XCUIApplication()
+        app.launch()
+        XCTAssertTrue(app.buttons.count >= 0)
+    }
+}
+EOF
