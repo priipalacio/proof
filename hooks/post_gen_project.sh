@@ -145,11 +145,16 @@ let package = Package(
     targets: [
         .target(
             name: "{{cookiecutter.project_name}}",
-            dependencies: []
+            dependencies: [],
+            path: "{{cookiecutter.project_name}}/Sources",
+            resources: [
+            .process("Resources/")
+            ]
         ),
         .testTarget(
             name: "{{cookiecutter.project_name}}Tests",
-            dependencies: ["{{cookiecutter.project_name}}"]
+            dependencies: ["{{cookiecutter.project_name}}"],
+            path: "{{cookiecutter.project_name}}Tests/Sources"
         ),
     ]
 )
