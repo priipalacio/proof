@@ -92,9 +92,8 @@ let package = Package(
 )
 EOF
 
-
 # App principal
-cat > "Demo/$DEMO_NAME/${DEMO_NAME}App.swift" <<EOF
+cat > "./Demo/${DEMO_NAME}Demo/${DEMO_NAME}App.swift" <<EOF
 import SwiftUI
 
 @main
@@ -108,7 +107,7 @@ struct ${DEMO_NAME}App: App {
 EOF
 
 # ContentView
-cat > "Demo/$DEMO_NAME/ContentView.swift" <<EOF
+cat > "Demo/${DEMO_NAME}Demo/ContentView.swift" <<EOF
 import SwiftUI
 
 struct ContentView: View {
