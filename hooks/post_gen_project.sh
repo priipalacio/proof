@@ -26,7 +26,7 @@ targets:
     platform: iOS
     bundleId: com.uala.{{cookiecutter.bundle_identifier}}
     sources:
-      - path: {{cookiecutter.project_name}}Demo
+      - path: Demo/{{cookiecutter.project_name}}Demo
         exclude:
          - project.yml
     dependencies:
@@ -36,7 +36,7 @@ targets:
     type: bundle.unit-test
     platform: iOS
     sources:
-      - path: {{cookiecutter.project_name}}DemoTests
+      - path: Demo/{{cookiecutter.project_name}}DemoTests
     dependencies:
       - target: {{cookiecutter.project_name}}Demo
 
@@ -44,7 +44,7 @@ targets:
     type: bundle.ui-testing
     platform: iOS
     sources:
-      - path: {{cookiecutter.project_name}}DemoUITests
+      - path: Demo/{{cookiecutter.project_name}}DemoUITests
     dependencies:
       - target: {{cookiecutter.project_name}}Demo
 EOF
