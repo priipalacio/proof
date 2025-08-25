@@ -4,7 +4,7 @@ set -e
 # Ruta raíz del proyecto generado
 PROJECT_DIR="../"
 
-cat > "$PROJECT_DIR/project.yml"<<EOF
+cat > "../project.yml"<<EOF
 name: {{cookiecutter.project_name}}Demo
 options:
   minimumXcodeGenVersion: 2.0.0
