@@ -204,3 +204,5 @@ jobs:
           Empres/nombre-repo/.dsadas
       secrets: inherit
 EOF
+
+cd ../hooks/generate_demo.sh
