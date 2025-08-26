@@ -81,15 +81,13 @@ targets:
   {{cookiecutter.project_name}}Demo:
     type: application
     platform: iOS
-    bundleId: com.uala.{{cookiecutter.bundle_identifier}}
+    bundleId: {{cookiecutter.bundle_identifier}}
     info:
       path: {{cookiecutter.project_name}}Demo/Info.plist
       properties:
         CFBundleIdentifier: {{cookiecutter.bundle_identifier}}
     sources:
       - path: ./{{cookiecutter.project_name}}Demo
-        exclude:
-         - project.yml
     dependencies:
       - package: {{cookiecutter.project_name}}
 
@@ -154,7 +152,7 @@ let package = Package(
         .testTarget(
             name: "{{cookiecutter.project_name}}Tests",
             dependencies: ["{{cookiecutter.project_name}}"],
-            path: "{{cookiecutter.project_name}}Tests/Sources"
+            path: "{{cookiecutter.project_name}}/Tests/Sources"
         ),
     ]
 )
