@@ -2,8 +2,9 @@
 set -e
 
 echo "$(pwd)"
-cd ..
-echo "ls ../"
+cd ../
+ls
+
 echo "➡️  Creando archivos demo..."
 bash scripts/generate_demo.sh
 
