@@ -4,7 +4,7 @@ set -e
 echo "$(pwd)"
 cd ..
 echo "➡️  Creando archivos demo..."
-bash ./scripts/generate_demo.sh
+bash scripts/generate_demo.sh
 
 echo "➡️  Generando proyecto..."
 bash ./scripts/generate_project.sh
