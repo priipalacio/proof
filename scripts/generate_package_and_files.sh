@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
 cd ..
 # Generacion de Changelog
 echo "# Changelog" > CHANGELOG.md

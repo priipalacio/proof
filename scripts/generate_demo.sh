@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
 DEMO_NAME="{{cookiecutter.project_name}}"
 
 mkdir -p ../Demo
