@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-
+echo "$(pwd)"
 echo "➡️  Creando archivos demo..."
 bash ../scripts/generate_demo.sh
 
