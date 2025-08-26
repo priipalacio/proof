@@ -3,10 +3,18 @@ set -Eeuo pipefail
 
 # ── Descubrir paths de forma robusta ───────────────────────────────────────────
 # Este archivo está en: <repo-generado>/hooks/post_gen_project.sh
-SCRIPT_DIR= "$(pwd)/hooks/scripts"
+# Raíz del proyecto generado
+ROOT_DIR="$(pwd)"
+SCRIPT_DIR="$ROOT_DIR/hooks"
 
-# Logs útiles para depurar
-echo "🧭 CWD:            $(pwd)"
+# Donde preferimos encontrar los scripts (dentro del proyecto generado)
+CANDIDATES=(
+  "$ROOT_DIR/scripts"           # si los copiás al proyecto generado
+  "$ROOT_DIR/hooks/scripts"     # fallback por si los dejaste en hooks/scripts
+  "$(cd "$ROOT_DIR/.." && pwd)/scripts"   # << tu caso: ../scripts (Utilities/scripts)
+)
+
+echo "🧭 CWD:            $ROOT_DIR"
 echo "📄 SCRIPT_DIR:     $SCRIPT_DIR"
 
 # ── Helpers inline (o movelos a scripts/00_lib.sh y 'source' allá) ────────────
