@@ -6,8 +6,8 @@ DEMO_NAME="{{cookiecutter.project_name}}"
 
 mkdir -p ../Demo
 mkdir -p ../Demo/${DEMO_NAME}Demo
-mkdir -p ../Demo/${DEMO_NAMEDemoTests
-mkdir -p ../Demo/${DEMO_NAMEDemoUITests
+mkdir -p ../Demo/${DEMO_NAME}DemoTests
+mkdir -p ../Demo/${DEMO_NAME}DemoUITests
 
 cd ../Demo
 
