@@ -75,7 +75,7 @@ options:
 
 packages:
   {{cookiecutter.project_name}}:
-    path: ../../{{cookiecutter.repository_name}}
+    path: ../{{cookiecutter.project_name}}
 
 targets:
   {{cookiecutter.project_name}}Demo:
@@ -84,8 +84,6 @@ targets:
     bundleId: {{cookiecutter.bundle_identifier}}
     info:
       path: {{cookiecutter.project_name}}Demo/Info.plist
-      properties:
-        CFBundleIdentifier: {{cookiecutter.bundle_identifier}}
     sources:
       - path: ./{{cookiecutter.project_name}}Demo
     dependencies:
