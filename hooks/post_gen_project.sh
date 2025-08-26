@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-chmod +x hooks/post_gen_project.sh scripts/*.sh
 
 echo "➡️  Creando archivos demo..."
 bash ./scripts/generate_demo.sh
