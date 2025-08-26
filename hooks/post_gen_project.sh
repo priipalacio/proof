@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd ../scripts
+cd ./scripts
 
 step "Creando archivos demo..."
 cd generate_demo.sh
