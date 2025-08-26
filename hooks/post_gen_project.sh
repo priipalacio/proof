@@ -3,7 +3,7 @@ set -Eeuo pipefail
 
 # ── Descubrir paths de forma robusta ───────────────────────────────────────────
 # Este archivo está en: <repo-generado>/hooks/post_gen_project.sh
-SCRIPT_DIR= ./scripts
+SCRIPT_DIR= "$(pwd)/hooks/scripts"
 
 # Logs útiles para depurar
 echo "🧭 CWD:            $(pwd)"
